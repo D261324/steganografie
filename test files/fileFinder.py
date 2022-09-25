@@ -1,6 +1,6 @@
 import os
 import types
-from sys import cv2 #verantwoordelijk voor het laden en tonen van img's
+from steganografie.methodes import showImg #verantwoordelijk voor het laden en tonen van img's
 import numpy as np
 
 inputImgName = input("hoe heet het volledige bestand + extentie die je wil gebruiken: ")
@@ -9,12 +9,12 @@ if inputImgName.lower().endswith(('.png', '.jpg', '.jpeg')): # Check filename, i
     
     currentDirectoryOfImg = os.getcwd() + "\\fase 3 development\steganografie\\test files\\img\\" + inputImgName
     
-    
     #checked of het opgegeven absolute route en bestands naam uit komen bij een bestaand bestand
     if os.path.isfile(currentDirectoryOfImg): #os.path.isfile: is een functie die een bool terug geeft; (currentDirectoryOfImg): is de variable met het absolute pad + bestandsnaam
         
         print("image file found") #file found
-        cv2.imshow()
+        showImg(inputImgName)
+        
     
     else:
         print("not found") #file not found
