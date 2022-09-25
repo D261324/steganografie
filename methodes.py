@@ -18,18 +18,18 @@ def encoding ():
             inputImgName = input("hoe heet het volledige bestand + extentie die je wil gebruiken: ")
             findImgFile = False # zorgt er voor dat de loop blijft lopen tot dat de variable op true wordt gezet
             
-            if inputImgName.lower().endswith(('.png', '.jpg', '.jpeg')): # Check filename, if ok:
-                noExtentionProvided = False
-                dirFilePath = os.path.exists("C:\\Users\\stefa\\OneDrive\\Desktop\\software developer\\td4-ssd-3b 2022-2023\\project_extern\\project 1\\fase 3 development\\steganografie\\img\\" + inputImgName)
-                
-                if dirFilePath:
-                    print("gevonden!")
+            dirFilePath = os.path.exists("C:\\Users\\stefa\\OneDrive\\Desktop\\software developer\\td4-ssd-3b 2022-2023\\project_extern\\project 1\\fase 3 development\\steganografie\\img\\" + inputImgName)
+            if dirFilePath == True:
+                print("gevonden!")
+                if inputImgName.lower().endswith(('.png', '.jpg', '.jpeg')): # Check filename, if ok:
+                    noExtentionProvided = False
+                else:
+                    print("dit was geen geldig bestands naam. bekijk het bestand in de verkenner")
                     img = Image.open(r"C:\\Users\\stefa\\OneDrive\\Desktop\\software developer\\td4-ssd-3b 2022-2023\\project_extern\\project 1\\fase 3 development\\steganografie\\img\\" + inputImgName) 
                     img.show() 
-                else:
-                    print("niet gevonden!")
             else:
-                print("dit was geen geldig bestands naam. bekijk het bestand in de verkenner")
+                print("niet gevonden!")
+           
     # img search end
     else:  
         lenghtImg = len(inputImgName)
@@ -37,9 +37,10 @@ def encoding ():
         
         msg = input("schrijf uw bericht: \n")
         encodedMsg = msgToBinairy(msg)
+        binListMsg = list(encodedMsg)
         
         print(len(encodedMsg))
-        print(encodedMsg)
+        print(binListMsg)
         #print (inputImgName, lenghtImg, msg, lenghtMsg )
         #return(lenghtImg, lenghtMsg)
 
