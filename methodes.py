@@ -23,10 +23,11 @@ def encoding ():
                 print("gevonden!")
                 if inputImgName.lower().endswith(('.png', '.jpg', '.jpeg')): # Check filename, if ok:
                     noExtentionProvided = False
-                else:
-                    print("dit was geen geldig bestands naam. bekijk het bestand in de verkenner")
                     img = Image.open(r"C:\\Users\\stefa\\OneDrive\\Desktop\\software developer\\td4-ssd-3b 2022-2023\\project_extern\\project 1\\fase 3 development\\steganografie\\img\\" + inputImgName) 
                     img.show() 
+                else:
+                    print("dit was geen geldig bestands naam. bekijk het bestand in de verkenner")
+                    
             else:
                 print("niet gevonden!")
            
@@ -37,10 +38,15 @@ def encoding ():
         
         msg = input("schrijf uw bericht: \n")
         encodedMsg = msgToBinairy(msg)
+        inputImgNameInBin = list(msgToBinairy(inputImgName))
         binListMsg = list(encodedMsg)
         
-        print(len(encodedMsg))
+
         print(binListMsg)
+        print(len(encodedMsg))
+        print(inputImgNameInBin)
+        print(len(inputImgNameInBin))
+        
         #print (inputImgName, lenghtImg, msg, lenghtMsg )
         #return(lenghtImg, lenghtMsg)
 
