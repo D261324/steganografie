@@ -1,6 +1,24 @@
+from operator import length_hint
 import os
+import sys
+import numpy as np
 from PIL import Image
 
+def msgToBinairy(msg):
+    # voor string
+    if type(msg) == str:
+        return ''.join([format(ord(i),"08b")for i in msg])
+        #return ''.join(map(bin,bytearray(msg,encoding='utf-8')))
+    # voor 
+    elif type(msg) == bytes or type(msg) == np.ndarray:
+        return [format(i ,"08b") for i in msg]
+    
+    elif type(msg) == int or type(msg) == np.uint8:
+        return format(msg, "08b")
+    else:
+        return TypeError(" invoer type wordt niet ondersteund")
+    
+#====================================================================================
 noExtentionProvided = True # dit zorgt dat de loop blijft lopen zolang de waarde niet veranderd
 
 while noExtentionProvided:
@@ -14,24 +32,19 @@ while noExtentionProvided:
             if inputImgName.lower().endswith(('.png', '.jpg', '.jpeg')): # Check filename, if ok:
                 noExtentionProvided = False
                 img = Image.open(r"C:\\Users\\stefa\\OneDrive\\Desktop\\software developer\\td4-ssd-3b 2022-2023\\project_extern\\project 1\\fase 3 development\\steganografie\\img\\" + inputImgName) 
-                img.show() 
+                #img.show() 
             else:
                 print("dit was geen geldig bestands naam. bekijk het bestand in de verkenner")
                 
         else:
             print("niet gevonden!")
    
-#x = 0 
-#y = 0     
-#rgb_pixel_value = img_image_rgb.getpixel((x,y))
-#img_image_rgb = rgbValueImage.convert("RGB")
+x = 0 
+y = 0     
+
+
 
 #locatie van de img in kwestie
-rgbValueImage = Image.open(r"C:\\Users\\stefa\\OneDrive\\Desktop\\software developer\\td4-ssd-3b 2022-2023\\project_extern\\project 1\\fase 3 development\\steganografie\\img\\" + inputImgName)
-sequence_of_pixels = rgbValueImage.getdata() # haalt info uit de img op. dit word in een object gezet
-list_of_pixels = list(sequence_of_pixels) # hier word de data in een lijst gezet
-for x in list_of_pixels: # voor x (aantal) pixels in sequence(reeks) 
-    print(list_of_pixels) # print iedere reeks voor iedere pixel
         
 #idee!!!
 # 1. zet ieder item uit de rgb reek om naar binaire code(dit kan als het goed is met de bin() functie) 
